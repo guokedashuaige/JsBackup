@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>alert("There will be an error")
+    [1, 2].forEach(alert)</script>
+<!--无分号的变体（variant）会出现报错，是因为 JavaScript 并不会在方括号 [...] 前添加一个隐式的分号。-->
+<script>alert("All fine now");
+
+[1, 2].forEach(alert)</script>
+</body>
+</html>
