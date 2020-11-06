@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--在本教程中，我们将使用以下 JavaScript 库进行测试：-->
+
+<!--Mocha —— 核心框架：提供了包括通用型测试函数 describe 和 it，以及用于运行测试的主函数。-->
+<!--Chai —— 提供很多断言（assertion）支持的库。它提供了很多不同的断言，现在我们只需要用 assert.equal。-->
+<!--Sinon —— 用于监视函数、模拟内置函数和其他函数的库，我们在后面才会用到它。-->
+<!--这些库都既适用于浏览器端，也适用于服务器端。这里我们将使用浏览器端的变体。-->
+
+<!--包含这些框架和 pow 规范的完整的 HTML 页面：-->
+
+<html>
+<head>
+    <!-- add mocha css, to show results -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <!-- add mocha framework code -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script>
+        mocha.setup('bdd'); // minimal setup
+    </script>
+    <!-- add chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+        // chai has a lot of stuff, let's make assert global
+        let assert = chai.assert;
+    </script>
+</head>
+
+<body>
+
+<script>
+    function pow(x, n) {
+        /* function code is to be written, empty now */
+    }
+</script>
+
+<!-- the script with tests (describe, it...) -->
+<script src="test.js"></script>
+
+<!-- the element with id="mocha" will contain test results -->
+<div id="mocha"></div>
+
+<!-- run tests! -->
+<script>
+    mocha.run();
+
+    function pow() {
+        return 8; // :) 我们作弊啦！
+    }
+</script>
+</body>
+
+</html>
+<!--该页面可分为五个部分：-->
+
+<!--<head> —— 添加用于测试的第三方库和样式文件。-->
+<!--    <script> 包含测试函数，在我们的例子中 —— 和 pow 相关的代码。-->
+<!--测试代码 —— 在我们的案例中是名为 test.js 的脚本，它包含上面 describe("pow", ...) 的那些代码。-->
+<!--HTML 元素 <div id="mocha"> 将被 Mocha 用来输出结果。-->
+<!--可以使用 mocha.run() 命令来开始测试。-->
