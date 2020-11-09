@@ -132,3 +132,175 @@ alert( num.toFixed(5) ); // "12.34000"，在结尾添加了 0，以达到小数�
 //我们能解决这个问题吗？当然，最可靠的方法是借助方法 toFixed(n) 对结果进行舍入：
 let sum = 0.1 + 0.2;
 alert( sum.toFixed(2) ); // 0.30
+
+//请注意，toFixed 总是返回一个字符串。它确保小数点后有 2 位数字。如果我们有一个电子购物网站，并需要显示 ¥ 0.30，这实际上很方便。对于其他情况，我们可以使用一元加号将其强制转换为一个数字：
+let sum = 0.1 + 0.2;
+alert( +sum.toFixed(2) ); // 0.3
+
+//测试：isFinite 和 isNaN
+// 还记得这两个特殊的数值吗？
+//
+// Infinity（和 -Infinity）是一个特殊的数值，比任何数值都大（小）。
+// NaN 代表一个 error。
+// 它们属于 number 类型，但不是“普通”数字，因此，这里有用于检查它们的特殊函数：
+//isNaN(value) 将其参数转换为数字，然后测试它是否为 NaN：
+alert( isNaN(NaN) ); // true
+alert( isNaN("str") ); // true
+//但是我们需要这个函数吗？我们不能只使用 === NaN 比较吗？不好意思，这不行。值 “NaN” 是独一无二的，它不等于任何东西，包括它自身：
+alert( NaN === NaN ); // false
+//isFinite(value) 将其参数转换为数字，如果是常规数字，则返回 true，而不是 NaN/Infinity/-Infinity：
+alert( isFinite("15") ); // true
+alert( isFinite("str") ); // false，因为是一个特殊的值：NaN
+alert( isFinite(Infinity) ); // false，因为是一个特殊的值：Infinity
+//有时 isFinite 被用于验证字符串值是否为常规数字：
+let num = +prompt("Enter a number", '');
+
+// 结果会是 true，除非你输入的是 Infinity、-Infinity 或不是数字
+alert( isFinite(num) );
+//请注意，在所有数字函数中，包括 isFinite，空字符串或仅有空格的字符串均被视为 0。
+
+//与 Object.is 进行比较
+// 有一个特殊的内建方法 Object.is，它类似于 === 一样对值进行比较，但它对于两种边缘情况更可靠：
+//
+// 它适用于 NaN：Object.is（NaN，NaN）=== true，这是件好事。
+// 值 0 和 -0 是不同的：Object.is（0，-0）=== false，从技术上讲这是对的，因为在内部，数字的符号位可能会不同，即使其他所有位均为零。
+// 在所有其他情况下，Object.is(a，b) 与 a === b 相同。
+//
+// 这种比较方式经常被用在 JavaScript 规范中。当内部算法需要比较两个值是否完全相同时，它使用 Object.is（内部称为 SameValue）。
+
+
+
+//parseInt 和 parseFloat
+// 使用加号 + 或 Number() 的数字转换是严格的。如果一个值不完全是一个数字，就会失败：
+alert( +"100px" ); // NaN
+//唯一的例外是字符串开头或结尾的空格，因为它们会被忽略。
+//
+// 但在现实生活中，我们经常会有带有单位的值，例如 CSS 中的 "100px" 或 "12pt"。并且，在很多国家，货币符号是紧随金额之后的，所以我们有 "19€"，并希望从中提取出一个数值。
+//
+// 这就是 parseInt 和 parseFloat 的作用。
+//
+// 它们可以从字符串中“读取”数字，直到无法读取为止。如果发生 error，则返回收集到的数字。函数 parseInt 返回一个整数，而 parseFloat 返回一个浮点数：
+alert( parseInt('100px') ); // 100
+alert( parseFloat('12.5em') ); // 12.5
+
+alert( parseInt('12.3') ); // 12，只有整数部分被返回了
+alert( parseFloat('12.3.4') ); // 12.3，在第二个点出停止了读取
+//某些情况下，parseInt/parseFloat 会返回 NaN。当没有数字可读时会发生这种情况：
+alert( parseInt('a123') ); // NaN，第一个符号停止了读取
+
+
+//parseInt(str, radix)` 的第二个参数
+// parseInt() 函数具有可选的第二个参数。它指定了数字系统的基数，因此 parseInt 还可以解析十六进制数字、二进制数字等的字符串：
+alert( parseInt('0xff', 16) ); // 255
+alert( parseInt('ff', 16) ); // 255，没有 0x 仍然有效
+
+alert( parseInt('2n9c', 36) ); // 123456
+
+//其他数学函数
+// JavaScript 有一个内建的 Math 对象，它包含了一个小型的数学函数和常量库。
+//
+// 几个例子：
+//
+// Math.random()
+// 返回一个从 0 到 1 的随机数（不包括 1）
+//
+// alert( Math.random() ); // 0.1234567894322
+// alert( Math.random() ); // 0.5435252343232
+// alert( Math.random() ); // ... (任何随机数)
+// Math.max(a, b, c...) / Math.min(a, b, c...)
+// 从任意数量的参数中返回最大/最小值。
+//
+// alert( Math.max(3, 5, -10, 0, 1) ); // 5
+// alert( Math.min(1, 2) ); // 1
+// Math.pow(n, power)
+// 返回 n 的给定（power）次幂
+//
+// alert( Math.pow(2, 10) ); // 2 的 10 次幂 = 1024
+
+//总结
+// 要写有很多零的数字：
+//
+// 将 "e" 和 0 的数量附加到数字后。就像：123e6 与 123 后面接 6 个 0 相同。
+// "e" 后面的负数将使数字除以 1 后面接着给定数量的零的数字。例如 123e-6 表示 0.000123（123 的百万分之一）。
+// 对于不同的数字系统：
+//
+// 可以直接在十六进制（0x），八进制（0o）和二进制（0b）系统中写入数字。
+// parseInt(str，base) 将字符串 str 解析为在给定的 base 数字系统中的整数，2 ≤ base ≤ 36。
+// num.toString(base) 将数字转换为在给定的 base 数字系统中的字符串。
+// 要将 12pt 和 100px 之类的值转换为数字：
+//
+// 使用 parseInt/parseFloat 进行“软”转换，它从字符串中读取数字，然后返回在发生 error 前可以读取到的值。
+// 小数：
+//
+// 使用 Math.floor，Math.ceil，Math.trunc，Math.round 或 num.toFixed(precision) 进行舍入。
+// 请确保记住使用小数时会损失精度。
+// 更多数学函数：
+//
+// 需要时请查看 Math 对象。这个库很小，但是可以满足基本的需求。
+
+
+
+
+//重复，直到输入的是一个数字
+// 重要程度: 5
+// 创建一个函数 readNumber，它提示输入一个数字，直到访问者输入一个有效的数字为止。
+//
+// 结果值必须以数字形式返回。
+//
+// 访问者也可以通过输入空行或点击“取消”来停止该过程。在这种情况下，函数应该返回 null
+function readNumber() {
+    let num;
+
+    do {
+        num = prompt("Enter a number please?", 0);
+    } while ( !isFinite(num) );
+
+    if (num === null || num === '') return null;
+
+    return +num;
+}
+
+alert(`Read: ${readNumber()}`);
+
+
+
+///一个偶发的无限循环
+// 重要程度: 4
+// 这是一个无限循环。它永远不会结束。为什么？
+//
+// let i = 0;
+// while (i != 10) {
+//   i += 0.2;
+// }
+
+let i = 0;
+while (i < 11) {
+    i += 0.2;
+    if (i > 9.8 && i < 10.2) alert( i );
+}
+//它们中没有一个恰好是 10。
+//
+// 之所以发生这种情况，是因为对 0.2 这样的小数时进行加法运算时出现了精度损失。
+//
+// 结论：在处理小数时避免相等性检查。
+
+
+
+//从 min 到 max 的随机数
+// 重要程度: 2
+// 内建函数 Math.random() 会创建一个在 0 到 1 之间（不包括 1）的随机数。
+//
+// 编写一个 random(min, max) 函数，用以生成一个在 min 到 max 之间的随机浮点数（不包括 max)）。
+//
+// 运行示例：
+//
+// alert( random(1, 5) ); // 1.2345623452
+// alert( random(1, 5) ); // 3.7894332423
+// alert( random(1, 5) ); // 4.3435234525
+function random(min, max) {
+    return min + Math.random() * (max - min);
+}
+
+alert( random(1, 5) );
+alert( random(1, 5) );
+alert( random(1, 5) );

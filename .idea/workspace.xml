@@ -11,30 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10cbe195-f4a3-4370-8114-d55621c041cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/1.12Nullish coalescing operator '??'.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.13Loops: while and for.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.14The &quot;switch&quot; statement.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.15Functions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.16Function expressions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.17Arrow functions, the basics.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1.18JavaScript specials.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.1Debugging in Chrome.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.2Coding Style.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.3Automated testing with Mocha.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2.3Mocha.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.1Objects.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.2Object references and copying.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.3Garbage collection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.4Object methods, &quot;this&quot;.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.5Constructor, operator &quot;new&quot;.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.6Optional chaining '?.'.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.7Symbol type.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3.8Object to primitive conversion.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.1Methods of primitives.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4.2Numbers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4.3Strings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.11Logical operators.js" beforeDir="false" afterPath="$PROJECT_DIR$/1.11Logical operators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4.2Numbers.js" beforeDir="false" afterPath="$PROJECT_DIR$/4.2Numbers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +63,8 @@
       <updated>1604323070367</updated>
       <workItem from="1604323071584" duration="478000" />
       <workItem from="1604370399924" duration="60575000" />
+      <workItem from="1604652892286" duration="2409000" />
+      <workItem from="1604818974731" duration="8003000" />
     </task>
     <servers />
   </component>
